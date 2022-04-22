@@ -1,6 +1,6 @@
 # SimpleBITSServer (Background Intelligent Transfer Service) [python3 fork]
 
-A for of the original [SimpleBITSServer](https://github.com/SafeBreach-Labs/SimpleBITSServer), which is a simple python implementation of a BITS server. BITS protocol is used to transfer files asynchronously between a client and a server.
+A fork of the original [SimpleBITSServer](https://github.com/SafeBreach-Labs/SimpleBITSServer), which is a simple python implementation of a BITS server. BITS protocol is used to transfer files asynchronously between a client and a server.
 The BITS protocol metadata communication resides mainly in BITS-defined HTTP headers, all start with prefix "BITS-". For that reason, this implemantation is based on python's built-in SimpleHTTPRequestHandler.
 
 The implementation corresponds to the [MSDN specification](https://msdn.microsoft.com/en-us/library/windows/desktop/aa362828(v=vs.85).aspx) for client and server packets.
