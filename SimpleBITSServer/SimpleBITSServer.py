@@ -16,8 +16,8 @@ Date: 2017-03-29T12:14:45Z
 
 """
 import os
-from BaseHTTPServer import HTTPServer
-from SimpleHTTPServer import SimpleHTTPRequestHandler
+from http.server import HTTPServer
+from http.server import SimpleHTTPRequestHandler
 
 
 # BITS Protocol header keys
@@ -200,7 +200,7 @@ class SimpleBITSRequestHandler(SimpleHTTPRequestHandler):
             Sends server response w/ headers and status code
         """
         self.send_response(status_code)
-        for k, v in headers_dict.iteritems():
+        for k, v in headers_dict.items():
             self.send_header(k, v)
         self.end_headers()
 
@@ -255,7 +255,7 @@ class SimpleBITSRequestHandler(SimpleHTTPRequestHandler):
             crange, total_length = content_range.split("/")
             total_length = int(total_length)
             range_start, range_end = [int(num) for num in crange.split("-")]
-        except AttributeError, IndexError:
+        except (AttributeError, IndexError):
             self.__send_response(status_code = HTTPStatus.BAD_REQUEST)
             return
 
@@ -414,7 +414,7 @@ class SimpleBITSRequestHandler(SimpleHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=SimpleBITSRequestHandler, port=80):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting BITS server...'
+    print('Starting BITS server...')
     httpd.serve_forever()
 
 
